@@ -1,0 +1,164 @@
+<imobzi-breadcrumb category="imoveis" [pageTitle]="property?.site_title"></imobzi-breadcrumb>
+<div class="imobzi-details site-content_wrap container">
+
+  <div *ngIf="property" class="row">
+    <div id="primary" class="col-xs-12 col-md-8  col-xl-9">
+      <main id="main" class="site-main" role="main">
+        <article class="tm-property-item tm-property has-post-thumbnail hentry">
+          <div class="content-container-recoil">
+            <h1 class="tm-property__title entry-title">{{property.site_title}}</h1>
+
+            <div class="detalhe_titulo">
+              <span class="tiposubtipo">Código: {{property.code}} - {{property.finality}} /
+                {{property.property_type}}</span>
+              <add-this-share></add-this-share>
+            </div>
+
+            <div class="resumoDetalhes">
+
+              <div class="tm-property__wrap template-sticked regular resumoDetalhesInner">
+                <div class="tm-property__attributes resumodetalhesIcons">
+                  <span *ngIf="property.bedroom" class="tm-property__attributes-bedrooms" title="Dormitórios">{{property.bedroom}} {{property.bedroom > 1? 'Dormitórios': 'Dormitório'}}</span>
+                  <span *ngIf="property.bathroom" class="tm-property__attributes-toilet"  title="{{property.bathroom > 1 ?'Banheiros' :'Banheiro'}}">{{property.bathroom}} {{property.bathroom > 1 ?'Banheiros' :'Banheiro'}}</span>
+                  <span *ngIf="property.suite" class="tm-property__attributes-bathrooms"  title="{{property.suite > 1 ?'Suítes' :'Suíte'}}">{{ property.suite }} {{property.suite > 1 ?'Suítes' :'Suíte'}}</span>
+                  <span *ngIf="property.garage" class="tm-property__attributes-parking-spot" title="Vagas">{{property.garage}} {{property.garage > 1? 'Vagas':'Vaga'}}</span>
+                  <span *ngIf="property.area" class="tm-property__attributes-area" title="Área Construída">Área construída: {{ property.area }} m²</span>
+                  <span *ngIf="property.lot_area" class="tm-property__attributes-area" title="Área do terreno">Área do terreno: {{ property.lot_area }} m²</span>
+                  <span *ngIf="property.useful_area" class="tm-property__attributes-area" title="Área Útil">Área útil: {{property.useful_area}} m²</span>
+                </div>
+              </div>
+
+              <div class="tm-property__price">
+                <h2 class="tm-property__subtitle detalhesSubtitulo">
+                  <ng-container *ngIf="property.sale_value || property.tags.indexOf('sale') != -1">
+                    Venda:
+                    <span class="tm-property__price">
+                      <strong
+                        *ngIf="property.site_publish_price else consultPrice">{{property.sale_value | currency:'BRL' : symbol : '1.0-0'}}</strong>
+                    </span>
+                    {{(property.sale_value && property.rental_value)? ' / ': ''}}
+                  </ng-container>
+                  <ng-container *ngIf="property.rental_value && property.tags.indexOf('rent') != -1">
+                    Locação:
+                    <span class="tm-property__price">
+                      <strong
+                        *ngIf="property.site_publish_price else consultPrice">{{property.rental_value | currency:'BRL' : symbol : '1.0-0'}}</strong>
+                    </span>
+                  </ng-container>
+                  <ng-container *ngIf="property.rental_value && property.tags.indexOf('vacation_rental') != -1">
+                    Temporada:
+                    <span class="tm-property__price">
+                      <strong
+                        *ngIf="property.site_publish_price else consultPrice">{{property.rental_value | currency:'BRL' : symbol : '1.0-0'}}</strong>
+                    </span>
+                  </ng-container>
+                </h2>
+              </div>
+              <div class="tm-property__price secondaryCosts"
+                *ngIf="property.fields?.additional_values && property.fields.additional_values.length > 0">
+                <h2 class="tm-property__subtitle detalhesSubtitulo">
+                  <ng-container
+                    *ngFor="let additional_value_item of property.fields.additional_values; let last = last">
+                    <ng-container *ngFor="let additional_value of additional_value_item">
+                      <ng-container *ngIf="additional_value.value">
+                        {{additional_value.name}}:
+                        <span class="tm-property__price" style="font-size: 1.43rem!important;">
+                          <strong
+                            *ngIf="property.site_publish_price else consultPrice">{{additional_value.value | currency:'BRL' : symbol : '1.0-0'}}</strong>
+                        </span>
+                        {{last? '' : ' / '}}
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </h2>
+              </div>
+              <ng-template #consultPrice>
+                <strong>Consulte!</strong>
+              </ng-template>
+            </div>
+          </div>
+
+          <property-galery *ngIf="property?.photos && property.photos.length > 0" [photos]="property.photos"
+            [multimidias]="property.multimidias"></property-galery>
+
+          <div class="content-container-recoil">
+            <div class="tm-property__summary entry-summary">
+
+              <!-- descrição -->
+              <div *ngIf="property.site_description" class="tm-property__description">
+                <h2 class='tm-property__subtitle'>Descrição</h2>
+                <div [innerHtml]="(property.site_description | sanitizedHtml)">
+                </div>
+              </div>
+
+              <!-- características do imóvel -->
+              <div *ngIf="property.features || property.nearby.length > 0" class="tm-property__attributes">
+                <h2 class="tm-property__subtitle">Características do Imóvel</h2>
+                <div class="property-feature-group marginLeftMinus10">
+                  <ng-container *ngFor="let category of property.features | objectgroups">
+                    <h3>{{category}}</h3>
+                    <ul>
+                      <li *ngFor="let feature of property.features[category]" title="{{feature.name}}">
+                        {{feature.name}}
+                      </li>
+                    </ul>
+                  </ng-container>
+                  <ng-container *ngIf="property.nearby.length > 0">
+                    <h3>Proximidades</h3>
+                    <ul>
+                      <li *ngFor="let propertyNearby of property.nearby" title="{{propertyNearby}}">
+                        {{propertyNearby}}
+                      </li>
+                    </ul>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <!-- mapa -->
+            <imobzi-property-location *ngIf="map" [adr]="property.address" [nbh]="property.neighborhood"
+              [cit]="property.city" [stt]="property.state" [lgn]="property.longitude" [lat]="property.latitude">
+            </imobzi-property-location>
+            <!-- corretor -->
+            <property-calendar *ngIf="property.calendar" [propertyCalendar]="property.calendar"></property-calendar>
+            <property-listing-broker *ngIf="property.listing_broker" [listingBroker]="property.listing_broker">
+            </property-listing-broker>
+          </div>
+        </article>
+      </main>
+    </div>
+
+    <!-- precisa de ajuda? -->
+    <property-contact-form id="help-window" propertyCode="{{property.code}}"
+      [vacationRental]="property.vacation_rental"></property-contact-form>
+
+    <!-- imóveis recomendados -->
+    <div class="content-container-recoil">
+      <properties-related *ngIf="propertiesRelated && propertiesRelated.length > 0"
+        [propertiesRelated]="propertiesRelated"></properties-related>
+      <div id="outros_imoveis" class="tm-property-related col-xs-12"></div>
+    </div>
+
+    <!-- script formulário -->
+    <script>
+      if ((jQuery(window).width() > 768) && (jQuery(window).height() > 654)) {
+        jQuery(window).scroll(function () {
+          var widgetAreaHeight = $('#single-property').height();
+          var widgetHeight = $('#contactForm').height();
+          var scrolledFromtop = jQuery(window).scrollTop();
+          var startFix = 257 - 115;
+          var stopFix = widgetAreaHeight - widgetHeight + startFix;
+          if (scrolledFromtop > stopFix) {
+            jQuery('#contactForm').removeClass('scrolled');
+            jQuery('#contactForm').addClass('scrolledToTheBottom');
+          } else if ((scrolledFromtop > startFix) && (scrolledFromtop < stopFix)) {
+            jQuery('#contactForm').addClass('scrolled');
+            jQuery('#contactForm').removeClass('scrolledToTheBottom');
+          } else {
+            jQuery('#contactForm').removeClass('scrolled');
+            jQuery('#contactForm').removeClass('scrolledToTheBottom');
+          }
+        });
+      }
+    </script>
+  </div>
+</div>

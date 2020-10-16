@@ -1,0 +1,24 @@
+<div class="tm-agent-info" style="margin-bottom: 50px;" *ngIf="realtor">
+    <div class="tm-agent-info__photo">
+        <lazy-loading-image>
+            <img alt="Corretor {{realtor.name}}" (error)="realtorImgErrorHandler($event)"
+                *ngIf src="{{realtor.profile_image_url}}" title="Corretor">
+        </lazy-loading-image>
+    </div>
+    <div class="tm-agent-info__details">
+        <h6 class="tm-agent-info__title" style="margin-top: 50px;">{{realtor.name}}</h6>
+        <div class="tm-agent-info__desc">
+        <ul>
+            <li *ngIf="realtor.license">CRECI {{realtor.license}}</li>
+            <li *ngIf="realtor.email">{{realtor.email}}</li>
+        </ul>
+        </div>
+        <div class="tm-agent-info__contacts" *ngIf="realtor.phones && realtor.phones.length > 0">
+            <div class="tm-agent-info__contacts-item empty-label">
+                <i class="tm-agent-info__contacts-item-icon fa fa-phone"></i>
+                <span class="tm-agent-info__contacts-item-label"></span>
+                <span class="tm-agent-info__contacts-item-value">{{realtor.phones[0].number}}</span>
+            </div>
+        </div>
+    </div>
+</div>

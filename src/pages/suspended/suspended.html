@@ -1,0 +1,61 @@
+<div id="suspended-container" class="suspended-container">
+    <video poster id="backgroundVideo" autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" playsinline
+        loop>
+        <source [src]="layoutBucket + '/video/suspended-background-video.mp4'" type="video/mp4">
+    </video>
+    <section id="cabecalho">
+        <div class="container">
+            <div class="row logo">
+                <a href="https://www.imobzi.com/?utm_source=site-desenvolvimento&utm_medium=pagina&utm_campaign=site-desenvolvimento&utm_content=site-desenvolvimento"
+                    target="_blank">
+                    <img [src]="layoutBucket + '/image/logo-camaleao-white.png'">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                    <h1>SITE EM DESENVOLVIMENTO</h1>
+                    <h2>ou temporariamente inativo</h2>
+                </div>
+                <h3>Para mais informações, consulte nosso serviço de suporte:</h3>
+
+                <button
+                    onclick="window.open('https://helpdesk.quickfast.com/?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento')">Acessar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="social">
+        <div class="container">
+            <div class="row">
+                <ul class="redesSociais">
+                    <li><a target="_blank"
+                            href="https://www.facebook.com/imobzi?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento">
+                            <img [src]="layoutBucket + '/image/facebook-white.png'"></a>
+                    </li>
+                    <li><a target="_blank"
+                            href="https://www.linkedin.com/company/imobzi/?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento">
+                            <img [src]="layoutBucket + '/image/linkedin-white.png'"></a>
+                    </li>
+                    <li><a target="_blank"
+                            href="https://www.youtube.com/imobzi?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento">
+                            <img [src]="layoutBucket + '/image/youtube-white.png'"></a>
+                    </li>
+                    <li><a target="_blank"
+                            href="http://www.imobzi.com/papoimobiliario/?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento">
+                            <img [src]="layoutBucket + '/image/papo-imobiliario-white.png'"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row copyright">
+                Imobzi é um produto desenvolvido por <a
+                    href="http://www.quickfast.com/?utm_source=site-desenvolvimento&amp;utm_medium=pagina&amp;utm_campaign=site-desenvolvimento&amp;utm_content=site-desenvolvimento"
+                    target="blank">Quickfast</a>
+            </div>
+        </div>
+    </section>
+</div>

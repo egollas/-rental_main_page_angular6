@@ -1,0 +1,30 @@
+<div *ngIf="typeSpotlights" class="tm_pb_section  tm_pb_section_2 tm_section_regular">
+    <div class="container">
+        <div class=" row tm_pb_row tm_pb_row_2">
+            <div class="tm_pb_column tm_pb_column_4_4  tm_pb_column_4 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tm_pb_taxonomy tm_pb_taxonomy_0 tm_pb_taxonomy_grid tm_pb_module">
+                    <h3>Procure por</h3>
+                    <div class="row tm_pb_taxonomy__wrapper">
+                        <div *ngFor="let type of typeSpotlights; let index = index"
+                                class="tm_pb_taxonomy__holder grid-item col-xs-12 col-sm-6 col-md-6  col-lg-3 col-xl-3">
+                            <figure class="tm_pb_taxonomy__inner property-type-card" routerLink="/buscar" (click)="typeSearch()" [queryParams]="{property_type: type.name}">
+                                <a title="{{type.name}}">
+                                    <img alt="{{type.name}}" class="term-img" height="338" src="{{layoutBucketPath}}/image/tiposubtipo_{{index}}.jpg" width="338" />
+                                </a>
+                                <figcaption class="tm_pb_taxonomy__content">
+                                    <h6>
+                                        <a routerLink="/buscar" (click)="typeSearch()" [queryParams]="{property_type: type.name}" title="{{type.name}}">{{type.name}}</a>
+                                    </h6>
+                                    <div class="tm_builder_outer_content">
+                                        <div class="tm_builder_inner_content tm_pb_gutters3"></div>
+                                    </div>
+                                    <span class="post-count">{{type.count}}{{type.count > 1? " Imóveis": " Imóvel"}}</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

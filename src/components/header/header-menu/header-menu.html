@@ -1,0 +1,28 @@
+<div class="stick-part">
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+        <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false" (click)="showMobileMenu()">
+            <i class="menu-toggle__icon material-icons">dehaze</i>
+            Menu
+        </button>
+        <ul id="main-menu" class="menu">
+            <ng-container *ngFor="let menuItem of menuItems; let menuIndex = index">
+                <li id="menu-item-{{menuIndex + 1}}" class="menu-item"
+                    [class.menu-item-has-children]="menuItem.submenus">
+                    <a [routerLink]="(menuItem.url)? menuItem.url : undefined" (click)="onMenuItemClicked(menuItem)"
+                        routerLinkActive="active" [queryParams]="menuItem.queryParams">{{menuItem.name}}</a>
+                    <a class="mobile-sublink" *ngIf="menuItem.submenus"
+                        (click)="submenuToggle('menu-item-' + (menuIndex + 1))"><i
+                            class="material-icons">keyboard_arrow_down</i></a>
+                    <ul class="sub-menu in-transition" *ngIf="menuItem.submenus">
+                        <li *ngFor="let submenuItem of menuItem.submenus; let submenuIndex = index"
+                            id="menu-item-{{menuIndex + 1}}-{{submenuIndex + 1}}" class="menu-item">
+                            <a [routerLink]="[(submenuItem.url)? submenuItem.url : undefined]"
+                                (click)="onMenuItemClicked(submenuItem)"
+                                [queryParams]="submenuItem.queryParams">{{submenuItem.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ng-container>
+        </ul>
+    </nav>
+</div>

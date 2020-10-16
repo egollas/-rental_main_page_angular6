@@ -1,0 +1,40 @@
+<div #photosBlock [swiper]="config"
+        class="swiper-container tm-property-gallery tm-property-gallery--top tm-property-gallery-js">    
+    <div class="swiper-wrapper tm-property-gallery__wrapper">
+        <div *ngFor="let photo of photos" class="swiper-slide tm-property-gallery__item photo-details">
+            <img alt="{{photo.description}}" src="{{photo.url + '=s0'}}" title="{{photo.description}}" />
+        </div>
+        <div *ngFor="let multimidia of multimidias" class="swiper-slide tm-property-gallery__item video-block">
+            <div class="detalhes-gallery-video-container">
+                <iframe [src]="multimidia.url" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="tm-property-gallery__button-next swiper-button-next"></div>
+    <div class="tm-property-gallery__button-prev swiper-button-prev"></div>
+</div>
+
+<div #thumbs [swiper]="thumbConfig"
+        class="swiper-container tm-property-gallery--thumbs swiper-container-horizontal">
+    <div class="swiper-wrapper tm-property-gallery__thumbs-wrapper">
+        <div *ngFor="let photo of photos" class="swiper-slide tm-property-gallery__thumbs-item" style="width: 138.429px; margin-right: 4px;">
+            <img alt="{{photo.description}}" src="{{photo.url + '=s150'}}" title="{{photo.description}}" />
+        </div>
+        <div *ngFor="let multimidia of multimidias" class="swiper-slide tm-property-gallery__thumbs-item" style="width: 138.429px; margin-right: 4px;">
+            <ng-container *ngIf="multimidia.category == virtual_tour else videoImage">
+                <div class="quickgallery1_miniatura miniatura-video">
+                    <img alt="{{multimidia.description}}"  src="{{multimidia.thumbnail}}" title="{{multimidia.description}}" />
+                    <img alt="{{multimidia.description}}"  class="detalhes-gallery-play-icon"
+                        src="{{layoutBucketPath + '/image/play.svg'}}" title="{{multimidia.description}}" />
+                </div>
+            </ng-container>
+            <ng-template #videoImage>
+                <div class="quickgallery1_miniatura miniatura-video">
+                    <img alt="{{multimidia.description}}" src="{{multimidia.thumbnail}}" title="{{multimidia.description}}" />
+                    <img alt="{{multimidia.description}}" class="detalhes-gallery-play-icon"
+                        src="{{layoutBucketPath + '/image/play.svg'}}" title="{{multimidia.description}}" />
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

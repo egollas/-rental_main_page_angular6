@@ -1,0 +1,69 @@
+<header id="masthead" class="site-header minimal container" role="banner">
+    <div class="top-panel">
+        <div class="top-panel__wrap container"></div>
+    </div>
+
+    <div class="header-container">
+        <div class="header-container_wrap site-main-menu_search_wrap container">
+
+            <!-- LOGO -->
+            <div class="site-branding logo-col">
+                <lazy-loading-image class="site-logo image">
+                    <img *ngIf src="{{bucketPath + '/logo.png'}}" class="site-link__img site-logo__link" alt="Logotipo de {{parameters?.company_name}}" rel="home"
+                        routerLink="/">
+                </lazy-loading-image>
+            </div>
+
+            <!-- MENU -->
+            <header-menu class="menu-col"></header-menu>
+
+            <!-- AREA DO CLIENTE E TELEFONES -->
+            <div class="search-message-col search-col">
+                <div class="top-panel__message" *ngIf="parameters && parameters.phone?.length > 0">
+                    
+                    <!-- AREA DO CLIENTE -->
+                    <!-- <div class="area-do-cliente" >
+                        <a class="link-area-do-cliente" href="http://cliente.imoveli.com/login" target="_black">
+                            <img src="{{layoutBucketPath + '/image/user_white.svg'}}" 
+                            class="site-link__img" alt="Área do Cliente" rel="home"
+                            routerLink=""> Área do Cliente</a>
+                    </div> -->
+                    <!-- END AREA DO CLIENTE -->
+
+                    <!-- TELEFONE -->
+                    <div class="info-block" style="margin-top: 20px;">
+                            Entre em contato conosco
+                        <div class="info-block_phone" *ngFor="let phone of parameters.phone.slice(0, 2); let last = last">
+                            <a (click)="onPhoneClicked(phone)" [class.phone-number]="phone.type.toLowerCase() !== 'whatsapp'">
+                                <img *ngIf="phone.type && phone.type.toLowerCase() === 'whatsapp' else telephoneIcon"
+                                    src="{{layoutBucketPath + '/image/whatsapp.png'}}"
+                                    class="whatsapp-header-icon">
+                                <ng-template #telephoneIcon>
+                                    <i class="lnr lnr-telephone"></i>
+                                </ng-template>            
+                                {{phone.number}}
+                            </a>
+                        </div>                        
+                    </div>
+                    <!-- END TELEFONE -->
+                </div>
+            </div>
+            <!-- END AREA DO CLIENTE E TELEFONES -->
+        </div>
+    </div>
+
+</header>
+
+<ng-container *ngIf="calledFromHome else headerSearch">
+    <div class="main-image-container" [style.background-image]="'url(' + bucketPath + '/imagem-principal.jpg)'">
+        <div class="main-image-content">
+            <h1>Encontre seu Imóvel</h1>
+            <header-search class="header-search-container">
+            </header-search>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #headerSearch>
+    <header-search></header-search>
+</ng-template>

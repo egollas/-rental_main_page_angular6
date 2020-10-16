@@ -1,0 +1,278 @@
+<div class="search-property-background"></div>
+
+<aside id="tm_re_search_form-10" class="widget widget-tm-re-search clearfix">
+
+    <form class="widget-tm-re-search__form widget-tm-re-search__form-advanced">
+        <div class="container">
+            <h3 class="widget-title">Filtrar por</h3>
+
+            <!-- disponibilidade -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Disponibilidade</span>
+                    <ng-container *ngIf="loadings['availabilities']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div class="checkbox-list" *ngIf="filterFields && filterFields?.availability">
+                    <div class="checkbox-item" *ngIf="filterFields.availability.buy">
+                        <input id="disponibilidade_venda" name="disponibilidade" type="radio" value="buy"
+                            [(ngModel)]="searchParams.availability" (change)="search();">
+                        <label for="disponibilidade_venda">Venda</label>
+                        <span *ngIf="filtersShowTotal">({{filterFields.availability.buy}})</span>
+                    </div>
+                    <div class="checkbox-item" *ngIf="filterFields.availability?.rent">
+                        <input id="disponibilidade_locacao" name="disponibilidade" type="radio" value="rent"
+                            [(ngModel)]="searchParams.availability" (change)="search();">
+                        <label for="disponibilidade_locacao">Locação</label>
+                        <span *ngIf="filtersShowTotal">({{filterFields.availability.rent}})</span>
+                    </div>
+                    <div class="checkbox-item" *ngIf="filterFields.availability?.vacation_rental">
+                        <input id="disponibilidade_temporada" name="disponibilidade" type="radio"
+                            value="vacation_rental" [(ngModel)]="searchParams.availability" (change)="search();">
+                        <label for="disponibilidade_temporada">Temporada</label>
+                        <span *ngIf="filtersShowTotal">({{filterFields.availability.vacation_rental}})</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- cidade -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Cidade</span>
+                    <ng-container *ngIf="loadings['cities']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_cidade" *ngIf="filterFields?.cities">
+                    <div class="checkbox-list">
+                        <div *ngFor="let city of filterFields.cities | objectgroups" class="checkbox-item">
+                            <input type="checkbox" [value]="city" [checked]="searchParams.cities.indexOf(city) !== -1"
+                                (change)="updateCities($event, city);">
+                            <label>{{city}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.cities[city]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.cities | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_cidade'}">
+                        </ng-container>
+                    </ng-container>
+                </div>
+
+            </div>
+
+            <!-- bairro -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Bairro</span>
+                    <ng-container *ngIf="loadings['neighborhoods']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_bairro" *ngIf="filterFields?.neighborhoods">
+                    <div class="checkbox-list">
+                        <div *ngFor="let neighborhood of filterFields.neighborhoods | objectgroups"
+                            class="checkbox-item">
+                            <input type="checkbox" [checked]="searchParams.neighborhoods.indexOf(neighborhood) !== -1"
+                                value="{{neighborhood}}" (change)="updateNeighborhoods($event, neighborhood);">
+                            <label>{{neighborhood}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.neighborhoods[neighborhood]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.neighborhoods | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_bairro'}">
+                        </ng-container>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <!-- imovel subtipo -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Tipo</span>
+                    <ng-container *ngIf="loadings['types']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_tiposubtipo" *ngIf="filterFields?.property_types">
+                    <div class="checkbox-list">
+                        <div *ngFor="let type of filterFields.property_types | objectgroups" class="checkbox-item">
+                            <input type="checkbox" value="{{type}}"
+                                [checked]="searchParams.propertyTypes.indexOf(type) !== -1"
+                                (change)="updatePropertyTypes($event, type);">
+                            <label>{{type}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.property_types[type]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.property_types | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_tiposubtipo'}">
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+
+            <!-- area construída -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Área</span>
+                    <ng-container *ngIf="loadings['areas']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_area" *ngIf="filterFields?.areas">
+                    <div class="checkbox-list">
+                        <div *ngFor="let area of filterFields.areas | objectgroups" class="checkbox-item">
+                            <input type="checkbox" value="{{area}}" [checked]="searchParams.area.indexOf(area) !== -1"
+                                (change)="updateArea($event, area);">
+                            <label>{{area | searchAreaItems}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.areas[area]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.areas | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_area'}">
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+
+            <!-- valor -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Valor (R$)</span>
+                    <ng-container *ngIf="loadings['values']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div>
+                    <ng-container *ngIf="filterFields?.values">
+                        <div class="input-container">
+                            <input class="input-filter tm-re-search-form__field" type="text" onclick="this.select()"
+                                ontouchend="this.select()" [(ngModel)]="startValue" mask="dot_separator.0"
+                                name="searchParamsMin" (input)="startValueChanged(start.value)" #start=ngModel>
+
+                            <span id="pesquisa-valor-valores" class="input-span">até</span>
+
+                            <input class="input-filter tm-re-search-form__field" type="text" onclick="this.select()"
+                                ontouchend="this.select()" [(ngModel)]="endValue" mask="dot_separator.0"
+                                name="searchParamsMax" (input)="endValueChanged(end.value)" #end=ngModel>
+                        </div>
+                        <span class="tm-re-search-form__range nstSlider" [attr.data-cur_min]="startValue || 0"
+                            [attr.data-cur_max]="endValue || 10" [attr.data-range_min]="filterFields?.values.min || 0"
+                            [attr.data-range_max]="filterFields?.values.max || 10">
+                            <div *ngIf="rentalSearch === true; else sale">
+                                <div class="bar range-rent"></div>
+                                <div class="leftGrip range-rent">-</div>
+                                <div class="rightGrip range-rent">+</div>
+                            </div>
+                            <ng-template #sale>
+                                <div class="bar"></div>
+                                <div class="leftGrip">-</div>
+                                <div class="rightGrip">+</div>
+                            </ng-template>
+                        </span>
+                    </ng-container>
+                </div>
+            </div>
+
+            <!-- dormitórios -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Dormitórios</span>
+                    <ng-container *ngIf="loadings['bedrooms']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_dormitorio" *ngIf="filterFields?.bedrooms">
+                    <div class="checkbox-list">
+                        <div *ngFor="let bedroom of filterFields.bedrooms | objectgroups" class="checkbox-item">
+                            <input type="checkbox" value="{{bedroom}}"
+                                [checked]="searchParams.bedrooms.indexOf(bedroom) !== -1"
+                                (change)="updateBedrooms($event, bedroom);">
+                            <label>{{bedroom}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.bedrooms[bedroom]}})</span>
+                        </div>
+
+                    </div>
+
+                    <ng-container *ngIf="(filterFields?.bedrooms | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_dormitorio'}">
+                        </ng-container>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <!-- suítes -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Suítes</span>
+                    <ng-container *ngIf="loadings['suites']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_suite" *ngIf="filterFields?.suites">
+                    <div class="checkbox-list">
+                        <div *ngFor="let suite of filterFields.suites | objectgroups" class="checkbox-item">
+                            <input type="checkbox" value="{{suite}}"
+                                [checked]="searchParams.suites.indexOf(suite) !== -1"
+                                (change)="updateSuites($event, suite);">
+                            <label>{{suite}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.suites[suite]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.suites | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_suite'}">
+                        </ng-container>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <!-- vagas -->
+            <div class="tm-re-search-form__group">
+                <div class="filter-label">
+                    <span class="tm-re-search-form__label">Vagas</span>
+                    <ng-container *ngIf="loadings['garages']">
+                        <ng-container *ngTemplateOutlet="loading"></ng-container>
+                    </ng-container>
+                </div>
+                <div id="filtro_ajax_vaga" *ngIf="filterFields?.garages">
+                    <div class="checkbox-list">
+                        <div *ngFor="let garage of filterFields.garages | objectgroups" class="checkbox-item">
+                            <input type="checkbox" [checked]="searchParams.garages.indexOf(garage) !== -1"
+                                value="{{garage}}" (change)="updateGarages($event, garage);">
+                            <label>{{garage}}</label>
+                            <span *ngIf="filtersShowTotal">({{filterFields.garages[garage]}})</span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="(filterFields?.garages | objectgroups).length > 6">
+                        <ng-container *ngTemplateOutlet="seeMore;context:{category: '#filtro_ajax_vaga'}">
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </form>
+</aside>
+
+<ng-template #loading>
+    <div class="loading">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+    </div>
+</ng-template>
+
+<!-- template para o botão de ver mais -->
+<ng-template #seeMore let-category="category" class="seeMore">
+    <a (click)="toggleList(category)" class="filtro_ver_mais">
+        <i class="material-icons minusIcon" style="display: none;">keyboard_arrow_up</i><span class="minusSpan"
+            style="display: none;">Ver menos</span>
+        <i class="material-icons plusIcon" style="display: block;">keyboard_arrow_down</i><span class="plusSpan"
+            style="display: inline;">Ver mais</span>
+    </a>
+</ng-template>
+<a href="#" class="btn"
+    onclick="$('#search-property').hide(); $('#botao-filtro-mobile').show(); return false;">Pronto</a>

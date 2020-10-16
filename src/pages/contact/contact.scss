@@ -1,0 +1,26 @@
+.formSuccess {
+    padding: 10px 25px;
+    .success {
+        color: red;
+    }
+}
+
+.invalidAlert {
+    padding: 10px 25px;
+    width: 100%;
+    color: red;
+}
+
+#newsletter-window {
+    position: relative;
+}
+
+@media (max-width: 768px){
+    #newsletter-window {
+        width: 100%;
+    } 
+}
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

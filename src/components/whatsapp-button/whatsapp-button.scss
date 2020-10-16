@@ -1,0 +1,31 @@
+.whatsapp-button-position {
+    position: fixed;
+    bottom: 130px;
+    z-index: 9999;
+    right: 19px;
+}
+
+.whatsapp-button {
+    background-color: #4dc247;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    transition-duration: 0.8s;
+    -webkit-transition-duration: 0.8s;
+    cursor: pointer;
+}
+
+.whatsapp-button:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition-duration: 0.8s;
+    -webkit-transition-duration: 0.8s;
+}
+
+.whatsapp-button img{
+    position: absolute;
+    width: 65%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

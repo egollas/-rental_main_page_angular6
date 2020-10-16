@@ -1,0 +1,32 @@
+h1 {
+    color: #000000;
+    font-weight: bold;
+}
+.imovel-nao-encontrado {
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+.tm-re-search-form__group-button {
+    margin-top: 1%;
+}
+
+@media(min-width:1440px) {
+    .imovel-nao-encontrado {
+        text-align: center;
+        margin-top: 11%;
+        margin-bottom: 10%;
+    }
+    
+    .tm-re-search-form__group-button {
+        margin-top: 4%;
+    }
+} 
+
+.lnr {
+    margin-left: -8px;
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+    margin-right: 8px;
+}

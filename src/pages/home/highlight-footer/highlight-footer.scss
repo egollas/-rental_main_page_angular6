@@ -1,0 +1,19 @@
+.footer-title {
+    margin-top: 30px !important;
+}
+
+@media (min-width: 992px) {
+    .tm-property__wrap.template-sticked .tm-property__item:not(:nth-child(-n+3)) {
+        margin-top: 0px !important;
+    }
+
+    .tm-property__wrap.template-sticked .tm-property__item:not(:nth-child(-n+4)) {
+        margin-top: 50px !important;
+    }
+}
+
+@media (min-width: 544px) and (max-width: 991px) {
+    .tm-property__wrap.template-sticked .tm-property__item {
+        margin-top: 50px !important;
+    }
+}

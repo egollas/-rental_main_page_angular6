@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900");
+*{
+    font-family:"Roboto",sans-serif
+}
+.suspended-container {
+    margin:0px;
+    background:url(https://imobzi.storage.googleapis.com/image/coding-background.jpg) no-repeat center center !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100000000;
+    bottom: 0;
+    right: 0;
+}
+video{
+    position:fixed;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    z-index:-100;
+    transform:translateX(-50%) translateY(-50%)
+}
+@media (max-width: 768px) {
+    .row{
+        padding:0px 15px
+    }
+}
+#cabecalho{
+    text-align:center;
+    // margin-bottom:48px
+}
+@media (max-width: 768px) {
+    #cabecalho {
+        margin-bottom:15px
+    }
+}
+#cabecalho img {
+    margin:85px auto 20px auto;
+}
+#cabecalho img:hover {
+    cursor:pointer
+}
+#main{
+    text-align:center;
+    margin-bottom:40px;
+}
+@media (max-width: 768px) {
+    #main{
+        margin-bottom:15px
+    }
+}
+#main .title {
+    border-bottom:2px solid #fff;
+    max-width:630px;
+    margin:0 auto
+}
+#main h1{
+    color:#fff;
+    font-size:60px;
+    font-weight:900;
+    line-height:1.2;
+    letter-spacing:2px;
+    margin-bottom:3px
+}
+@media (min-width: 451px) and (max-width: 768px) {
+    #main h1{
+        font-size:38px
+    }
+}
+@media (max-width: 450px) {
+    #main h1{
+        font-size:28px
+    }
+}
+#main h2{color:#fff;font-size:30px;font-weight:400;margin-bottom:23px;margin-top:0px}
+@media (max-width: 768px){#main h2{font-size:24px;margin-top:25px;margin-bottom:25px}}
+#main h3{color:#fff;font-size:20px;font-weight:400;margin-bottom:16px;margin-top:15px;width: 100%;}
+#main button{height:50px;font-size:25px;font-weight:400;background-color:#0EA0CF;border:none;color:#fff;padding:6px 53px;margin-left: calc(50% - 89px);}
+#main button:hover{background-color:#20bdf0}#social{text-align:center;color:#fff}
+#social .redesSociais{list-style:none;margin-bottom:10px}
+@media (max-width: 768px){#social .redesSociais{margin-bottom:15px}}
+#social .redesSociais li{width:44px;height:44px;display:inline-block;margin:20px 15px}
+@media (max-width: 400px){#social .redesSociais li{margin:20px 9px}}
+#social .redesSociais li a{width:100%;height:100%}#social .redesSociais li img{width:100%;height:100%}
+#social .copyright{margin-bottom:0px;margin-right: 0 !important;}#social .copyright a{color:#fff;text-decoration:none !important;}
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    .row {
+        padding: 0 !important;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+#social {
+    .row {
+        display: block;
+    }
+}
+
+.logo {
+    width: 80px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

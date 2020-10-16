@@ -1,0 +1,45 @@
+<div id="content" class="site-content">
+
+        <!-- inserir modo dinâmico para o carregamento do mapa -->
+        <imobzi-map *ngIf="layoutType.search_map && propertiesMap && map" [properties]="propertiesMap"></imobzi-map>
+
+        <imobzi-breadcrumb pageTitle="Imóveis"></imobzi-breadcrumb>
+
+        <div class="site-content_wrap container">
+            <div class="row">
+                <div id="primary" class="col-xs-12 col-md-8 col-md-push-4 col-xl-9 col-xl-push-3">
+                    <main id="main" class="site-main" role="main">
+                        <search-realtor *ngIf="searchParams?.nickname"
+                            [realtorId]="searchParams.nickname">
+                        </search-realtor>
+                        <imobzi-property-list
+                            [properties]="properties"
+                            [searchParams]="searchParams"
+                            (searchParamsChange)="search()"
+                            [propertiesCount]="count"
+                            [propertiesCursorGenerate]="cursor_generate"
+                            [searchStorage]="searchStorage">
+                        </imobzi-property-list>
+                    </main>
+                </div>
+
+                <!-- filtros -->
+                <imobzi-filters #imobziFilters
+                    (searchParamsChange)="searchByFilter()"
+                    [filterFields]="filterFields"
+                    [searchParams]="searchParams"
+                    [startValue]="startValue"
+                    [endValue]="endValue"
+                    [filtersShowTotal]="filtersShowTotal"
+                    id="search-property"
+                    class="col-xs-12 col-md-4 col-md-pull-8 col-xl-3 col-xl-pull-9 search-property widget-area"
+                    role="complementary">
+                </imobzi-filters>
+            </div>
+        </div>
+    </div>
+    <a href="#" id="botao-filtro-mobile" onclick="$('#search-property').show(); $(this).hide(); return false;">
+        <lazy-loading-image>
+            <img alt="Filtrar" *ngIf src="{{layoutBucketPath + '/image/filtrar.svg'}}">
+        </lazy-loading-image>
+    </a>

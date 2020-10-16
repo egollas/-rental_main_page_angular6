@@ -1,0 +1,86 @@
+<div class="tm_pb_section  tm_pb_section_0 tm_section_regular" *ngIf="properties">
+    <div class="container">
+        <div class=" row tm_pb_row tm_pb_row_0">
+            <div
+                class="tm_pb_column tm_pb_column_4_4  tm_pb_column_0 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="tm_pb_text tm_pb_module tm_pb_bg_layout_light tm_pb_text_align_center tm_pb_text_0">
+                    <h3 class="imoveisDestaqueTitle">Imóveis em Destaque</h3>
+                </div>
+                <hr class="tm_pb_module tm_pb_space tm_pb_divider_0" />
+                <div class="tm_pb_text tm_pb_module tm_pb_bg_layout_light tm_pb_text_align_left tm_pb_text_1">
+                    <div class="tm-property__wrap template-sticked regular">
+                        <div *ngFor="let property of properties; let index = index"
+                            class="tm-property__item item-{{index + 1}} clearfix odd tm-property-has-thumb">
+                            <div class="tm-property__inner">
+                                <div class="tm-property__photo">
+                                    <div class="tm-property__status">
+                                        {{(property.tags.indexOf('sale') != -1)? 'Venda': ''}}{{(property.tags.length == 2)? ' / ': ''}}
+                                        {{(property.tags.indexOf('rent') != -1)? 'Locação': ''}}
+                                        {{(property.tags.indexOf('vacation_rental') != -1)? 'Temporada': ''}}
+                                    </div>
+                                    <a
+                                        routerLink="{{(property.site_url)? property.site_url : '/imovel/codigo/' + property.code}}">
+                                        <lazy-loading-image>
+                                            <img alt="Ver mais detalhes de {{property.property_type}} em {{property.neighborhood}} - {{property.city}}/{{property.state}}"
+                                                height="344" onerror="imgErrorHandler(this)" *ngIf
+                                                src="{{property.cover_photo.url}}" title="Mais detalhes" width="648" />
+                                        </lazy-loading-image>
+                                    </a>
+                                </div>
+                                <div class="tm-property__content">
+                                    <h6 class="tm-property__title"><a
+                                            routerLink="{{(property.site_url)? property.site_url : '/imovel/codigo/' + property.code}}">{{property.neighborhood}}</a>
+                                    </h6>
+                                    <h6 class="tm-property__price">
+                                        <ng-container *ngIf="property.site_publish_price; else consult">
+                                            <ng-container *ngIf="property.sale_value; else rentalValue">
+                                                {{property.sale_value | currency:'BRL' : symbol : '1.0-0'}}
+                                            </ng-container>
+                                            <ng-template #rentalValue>
+                                                {{property.rental_value | currency:'BRL' : symbol : '1.0-0'}}
+                                            </ng-template>
+                                        </ng-container>
+                                        <ng-template #consult>
+                                            Consulte!
+                                        </ng-template>
+                                    </h6>
+                                    <div *ngIf="property.site_description" class="tm-property__excerpt">
+                                        {{ property.site_description | slice:0:70 }}{{ property.site_description.length > 70 ? '&hellip;' : ''}}
+                                    </div>
+                                    <div class="tm-property__attributes">
+                                        <span *ngIf="property.bedroom" class="tm-property__attributes-bedrooms"
+                                            title="{{property.bedroom > 1? 'Dormitórios': 'Dormitório'}}">{{property.bedroom}}</span>
+                                        <span *ngIf="property.bathroom" class="tm-property__attributes-toilet"
+                                            title="{{property.bathroom > 1 ?'Banheiros' :'Banheiro'}}">{{property.bathroom}}</span>
+                                        <span *ngIf="property.suite" class="tm-property__attributes-bathrooms"
+                                            title="{{property.suite > 1 ?'Suítes' :'Suíte'}}">{{ property.suite }}</span>
+                                        <span *ngIf="property.garage" class="tm-property__attributes-parking-spot"
+                                            title="{{property.garage > 1? 'Vagas':'Vaga'}}">{{property.garage}}</span>
+                                        <span *ngIf="property.area" class="tm-property__attributes-area"
+                                            title="Área Construída">{{ property.area }} m²</span>
+                                        <span *ngIf="property.lot_area" class="tm-property__attributes-area"
+                                            title="Área do terreno">{{ property.lot_area }} m²</span>
+                                        <span *ngIf="property.useful_area" class="tm-property__attributes-area"
+                                            title="Área Útil">{{property.useful_area}} m²</span>
+                                    </div>
+                                    <div class="tm-property__footer clearfix">
+                                        <div class="tm-property__footer-left">
+                                            <div *ngIf="property.finality && property.property_type"
+                                                class="tm-property__type">{{ translateFinality(property.finality) }} /
+                                                {{ property.property_type }}</div>
+                                            <div *ngIf="property.code" class="tm-property__code">Cód.
+                                                {{ property.code }}</div>
+                                        </div>
+                                        <a routerLink="{{(property.site_url)? property.site_url : '/imovel/codigo/' + property.code}}"
+                                            class="btn btn-default tm-property__more">Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="tm_pb_module tm_pb_space tm_pb_divider_1">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.tm-pb-contact-message p {
+    display: block !important;
+    text-align: right;
+}
+
+@media(max-width: 1400px) {
+    .custom-msg {
+        margin-top:50px;
+    }
+}
+
+@media(min-width: 1440px) {
+    .custom-msg {
+        margin-top:120px;
+    }
+}

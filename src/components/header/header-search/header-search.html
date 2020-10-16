@@ -1,0 +1,37 @@
+<section id="full-width-header-area" class="full-width-header-area widget-area">
+    <aside id="tm_re_search_form-8" class="widget widget-tm-re-search">
+
+        <form #headerSearch="ngForm" (ngSubmit)="submitForm(headerSearch);"  action="/buscar" class="widget-tm-re-search__form widget-tm-re-search__form-main" id="simple-search">
+            <div class="container">
+
+                <div class="disponibilidadeCampo SlectBox">
+                    <select required [(ngModel)]="availabilitySelected" name="finality" (change)="clearSearch()">
+                        <option *ngFor="let finality of propertyTypesSearch | objectgroups" [value]="finality">
+                            {{translateAvailability(finality)}}
+                        </option>
+                    </select>
+                </div>
+                <div id="busca_ajax_tiposubtipo" class="tiposubtipoCampo SlectBox" >
+                    <select *ngIf="propertyTypesSearch" required [(ngModel)]="typeSelected" name="propertyType">
+                        <option [selected]="typeSelected == ''" [value]="''">
+                            Tipo
+                        </option>
+                        <option *ngFor="let propertyType of propertyTypesSearch[availabilitySelected]" [value]="propertyType.property_type">
+                            {{propertyType.property_type}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="tm-re-search-form__group">
+                    <input [(ngModel)]="searchText" name="search" (keyup.enter)="isNumber()"
+                        class="tm-re-search-form__field" id="autocomplete" placeholder="Cidade, bairro ou código" type="text" />
+                </div>
+                <button class="tm-re-search-form__submit" name="button" type="submit" title="Buscar">Buscar</button>
+                <a class="tm-re-search-form__toggle-forms__open" (click)="AdvancedSearch()" routerLink="/buscar" title="Pesquisa avançada">
+                    <i class="lnr lnr-cog"></i>
+                    <span class="btn-text">Pesquisa avançada</span>
+                </a>
+            </div>
+        </form>
+    </aside>
+</section>

@@ -1,0 +1,20 @@
+@media (min-width: 1200px) {
+    .at-share-btn-elements {
+        width: 50%;
+        float: right;
+        margin-top: -25px;
+    }
+}
+@media (min-width: 991px) {
+    .at-share-btn-elements {
+        width: 50%;
+        float: right;
+        margin-top: -38px;
+        text-align: right;
+    }
+}
+.at-share-btn-elements {
+    width: 100%;
+    float: right;
+    text-align: left;
+}

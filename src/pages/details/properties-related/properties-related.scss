@@ -1,0 +1,25 @@
+.properties-related-block {
+    width: 100%;
+}
+
+.properties-related-block .tm-property__subtitle {
+    padding: 28px 1.7855rem 14px !important;
+}
+
+.tm-property__inner {
+    cursor: pointer;
+    height: 100%;
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+
+    .tm-property__item .tm-property__photo {
+        height: auto !important;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 544px) {
+    .tm-property__item .tm-property__photo {
+        height: auto !important;
+    }
+}

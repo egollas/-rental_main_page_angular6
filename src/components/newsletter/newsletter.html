@@ -1,0 +1,74 @@
+<div id="sidebar-primary" class="sidebar-primary widget-area" role="complementary">
+    <aside id="newsletterForm" class="form-page-sidebar widget widget_search">
+        <div *ngIf="socialNetworks && socialNetworks.length > 0" class="social-list social-list--icon form-page-sidebar-section">
+            <h3 class="widget-title">Seguir</h3>
+            <ul class="social-list__items inline-list">
+                <li *ngFor="let socialNetwork of socialNetworks" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41">
+                    <a href="{{socialNetwork.account}}"><span class="screen-reader-text">{{socialNetwork.name}}</span></a>
+                </li>
+                <!-- <li *ngIf="socialMedias.facebook" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-41">
+                    <a href="{{socialMedias.facebook}}"><span class="screen-reader-text">Facebook</span></a>
+                </li>
+    
+                <li *ngIf="socialMedias.twitter" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-42">
+                    <a href="{{socialMedias.twitter}}"><span class="screen-reader-text">Twitter</span></a>
+                </li>
+    
+                <li *ngIf="socialMedias.instagram" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43">
+                    <a href="{{socialMedias.instagram}}"><span class="screen-reader-text">Instagram</span></a>
+                </li>
+    
+                <li *ngIf="socialMedias.googleplus" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-43">
+                    <a href="{{socialMedias.googleplus}}"><span class="screen-reader-text">Google +</span></a>
+                </li> -->
+    
+            </ul>
+        </div>
+        
+        <form #newsletter="ngForm" (ngSubmit)="submit();" class="search-form form-page-sidebar-section" id="newsletter">
+            <div style="margin:0;padding:0;display:inline"></div>
+            <h3 class="widget-title">Newsletter</h3>
+    
+            <div *ngIf="displaySuccess && !displayFailure" id="newsletter_mensagens" class="tm-pb-contact-message" style="display:block;">
+                Você foi cadastrado!
+            </div>
+
+            <div *ngIf="!displaySuccess && displayFailure" id="newsletter_mensagens" class="tm-pb-contact-message" style="display:block;">
+                Por favor, preencha ambos os campos abaixo:
+            </div>
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" id="newsletter_mensagens" class="tm-pb-contact-message" style="display:block;">
+                Nome inválido
+            </div>
+            
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" id="newsletter_mensagens" class="tm-pb-contact-message" style="display:block;">
+                E-mail inválido
+            </div>
+
+            <input required
+                class="search-form__field" 
+                id="campos_nome_newsletter" 
+                placeholder="Digite o seu nome" 
+                title="Nome" 
+                type="text" 
+                [(ngModel)]="model.name" name="Nome"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+                #name="ngModel" />
+    
+            <input required
+                class="search-form__field" 
+                id="campos_email_newsletter" 
+                placeholder="Digite o seu e-mail" 
+                title="E-mail" 
+                type="email" 
+                [(ngModel)]="model.email" name="E-mail"
+                [ngModelOptions]="{ updateOn: 'blur' }" 
+                [email]="true"
+                #email="ngModel"/>
+    
+            <button class="btn" name="button" type="submit">Subscrever</button>
+        </form>
+    
+    </aside>            
+</div>

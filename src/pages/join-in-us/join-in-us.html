@@ -1,0 +1,210 @@
+<div id="content" class="site-content container">
+        <imobzi-breadcrumb pageTitle="Trabalhe Conosco"></imobzi-breadcrumb>
+        <div class="site-content_wrap container">
+    
+            <div class="row">
+                <div id="primary" class="col-xs-12 col-md-12 col-xl-12">
+                    <main id="main" class="site-main" role="main">
+                        <article class="page type-page hentry no-thumb">
+                            <header class="entry-header">
+                                <h3>Trabalhe Conosco</h3>
+                                <hr>
+                            </header>
+                            <div class="entry-content tm_pb_builder">
+                                <div class="tm_builder_outer_content">
+                                    <div class="tm_builder_inner_content tm_pb_gutters3">
+                                        <div class="tm_pb_section  tm_pb_section_0 tm_section_regular">
+                                            <div class="container">
+                                                <div class=" row tm_pb_row tm_pb_row_0">
+                                                    <div *ngIf="submitForm === false"
+                                                        class="tm_pb_column tm_pb_column_4_4  tm_pb_column_0 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <div id="tm_pb_contact_form_0"
+                                                            class="tm_pb_contact_form form-with-labels tm_pb_contact_form_0 tm_pb_contact_form_container clearfix tm_pb_module"
+                                                            data-form_unique_num="0">                                                           
+    
+                                                            <!-- <div id="messagens" class="tm-pb-contact-message"></div> -->
+    
+                                                            <form #form="ngForm" (ngSubmit)="submit(form);"
+                                                                class="tm_pb_contact_form clearfix" id="peca_imovel">
+                                                                <div style="margin:0;padding:0;display:inline"></div>
+                                                                <div id="mensagens" class="tm-pb-contact-message"></div>
+    
+                                                                <div class="row" ngModelGroup="email" #parceiroCtrl="ngModelGroup">
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label text-required" for="campos_name">Nome*</label>
+                                                                        <input class="tm_pb_contact_form_input" minlength="2"
+                                                                            id="campos_name" placeholder="Nome*" type="text"
+                                                                            [(ngModel)]="contact.name" #name="ngModel"  name="Nome" required
+                                                                            [class.field_with_error]="(name.touched || name.dirty) && name.invalid || form.submitted"
+                                                                            [class.field_with_success]="name.valid">
+                                                                        <small class="message-error" *ngIf="(name.touched || name.dirty || form.submitted) && name.invalid">✖ É necessário preencher o campo 'Nome'</small>
+                                                                        <small class="message-success" *ngIf="name.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label form-right-field-label text-required" id="campos_email">Email*</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            id="campos_email" placeholder="Email*" type="email" 
+                                                                            [(ngModel)]="contact.email" #email="ngModel" name="email" required [email]="true"
+                                                                            [class.field_with_error]="(email.touched || email.dirty) && email.invalid || form.submitted"
+                                                                            [class.field_with_success]="email.valid">
+                                                                        <small class="message-error" *ngIf="(email.touched || email.dirty || form.submitted) && email.invalid">✖ É necessário preencher corretamente o campo 'Email'</small>
+                                                                        <small class="message-success" *ngIf="email.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label" for="campos_phone">Telefone</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            id="campos_phone" placeholder="Telefone" type="text" mask="(00) 0000-0000" [dropSpecialCharacters]="false"
+                                                                            [(ngModel)]="contact.phone" #phone="ngModel" name="Telefone" minlength="14"
+                                                                            [class.field_with_error]="(phone.touched || phone.dirty) && phone.invalid"
+                                                                            [class.field_with_success]="(phone.touched || phone.dirty) && phone.valid">
+                                                                            <small class="message-error" *ngIf="(phone.touched || phone.dirty) && phone.invalid">✖ É necessário preencher corretamente o campo 'Telefone'</small>
+                                                                            <small class="message-success" *ngIf="(phone.touched) && phone.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label form-right-field-label" for="campos_cellphone">Celular</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            id="campos_cellphone" placeholder="Celular" type="text" mask="(00) 00000-0000" [dropSpecialCharacters]="false"
+                                                                            [(ngModel)]="contact.cellphone" #cellphone="ngModel" name="Celular" minlength="15"
+                                                                            [class.field_with_error]="(cellphone.touched || cellphone.dirty) && cellphone.invalid"
+                                                                            [class.field_with_success]="(cellphone.touched || cellphone.dirty) && cellphone.valid">
+                                                                        <small class="message-error" *ngIf="(cellphone.touched || cellphone.dirty) && cellphone.invalid">✖ É necessário preencher corretamente o campo 'Celular'</small>
+                                                                        <small class="message-success" *ngIf="(cellphone.touched) && cellphone.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-12"></div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label class="tm_pb_contact_form_label text-required"
+                                                                            for="campos_zipcode">Cep*</label>
+                                                                        <input class="tm_pb_contact_form_input"                                                                        
+                                                                            id="campos_zipcode"  placeholder="Cep" type="text"
+                                                                            mask="00000-000" [dropSpecialCharacters]="false" minlength="9"
+                                                                            [(ngModel)]="contact.zipcode" #zipcode="ngModel" name="Cep" required (blur)="getAddressByZipCode()" 
+                                                                            [class.field_with_error]="(zipcode.touched || zipcode.dirty) && zipcode.invalid || form.submitted || zipCode === true"
+                                                                            [class.field_with_success]="zipcode.valid && zipCode !== true">
+                                                                        <small class="message-error" *ngIf="(zipcode.touched || zipcode.dirty || form.submitted) && zipcode.invalid || zipCode === true">✖ É necessário preencher o campo 'Cep' com um valor valido</small>
+                                                                        <small class="message-success" *ngIf="zipcode.valid && zipCode !== true">✔ Valido</small>
+                                                                    </div>
+
+                                                                    <div class="tm_pb_contact_field col-md-6"></div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-8">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label text-required" for="campos_adrress">Endereço*</label>
+                                                                        <input class="tm_pb_contact_form_input"                                                                        
+                                                                            id="campos_adrress" placeholder="Endereço*" type="email"  
+                                                                            [(ngModel)]="contact.address" name="Endereço" #address="ngModel" required
+                                                                            [class.field_with_error]="(address.touched || address.dirty) && address.invalid || form.submitted"
+                                                                            [class.field_with_success]="address.valid">
+                                                                        <small class="message-error" *ngIf="(address.touched || address.dirty || form.submitted) && address.invalid">✖ É necessário preencher o campo 'Endereço'</small>
+                                                                        <small class="message-success" *ngIf="address.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-4">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label form-right-field-label" for="campos_address_complement">Complemento</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            id="campos_address_complement" placeholder="Complemento" type="text"
+                                                                            [(ngModel)]="contact.address_complement" #adressComplement="ngModel" name="Complemento">
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-4">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label text-required" for="campos_neighborhood">Bairro*</label>
+                                                                        <input class="tm_pb_contact_form_input"                                                                        
+                                                                            id="campos_neighborhood" placeholder="Bairro*" type="text"                                                                         
+                                                                            [(ngModel)]="contact.neighborhood" #neighborhood="ngModel"  name="Bairro" required
+                                                                            [class.field_with_error]="(neighborhood.touched || neighborhood.dirty) && neighborhood.invalid || form.submitted"
+                                                                            [class.field_with_success]="neighborhood.valid">
+                                                                        <small class="message-error" *ngIf="(neighborhood.touched || neighborhood.dirty || form.submitted) && neighborhood.invalid">✖ É necessário preencher o campo 'Bairro'</small>
+                                                                        <small class="message-success" *ngIf="neighborhood.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-4">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label form-right-field-label text-required" for="campos_city">Cidade*</label>
+                                                                        <input class="tm_pb_contact_form_input"                                                                        
+                                                                            id="campos_city"  placeholder="Cidade*" type="text"
+                                                                            [(ngModel)]="contact.city" #city="ngModel" name="Cidade" required
+                                                                            [class.field_with_error]="(city.touched || city.dirty) && city.invalid || form.submitted"
+                                                                            [class.field_with_success]="city.valid">
+                                                                        <small class="message-error" *ngIf="(city.touched || city.dirty || form.submitted) && city.invalid">✖ É necessário preencher o campo 'Cidade'</small>
+                                                                        <small class="message-success" *ngIf="city.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-4">
+                                                                        <label
+                                                                            class="tm_pb_contact_form_label form-right-field-label text-required" for="campos_state">Estado*</label>
+                                                                        <select
+                                                                            id="campos_state" placeholder="Estado*"
+                                                                            [(ngModel)]="contact.state"  #state="ngModel" name="Estado" required
+                                                                            [class.field_with_error]="(state.touched || state.dirty) && state.invalid || form.submitted"
+                                                                            [class.field_with_success]="state.valid">
+                                                                            <option *ngFor="let state of states"
+                                                                                [value]="state">{{state}}</option>
+                                                                        </select>
+                                                                        <small class="message-error" *ngIf="(state.touched || state.dirty || form.submitted) && state.invalid">✖ É necessário preencher o campo 'Estado'</small>
+                                                                        <small class="message-success" *ngIf="state.valid">✔ Valido</small>
+                                                                    </div>
+    
+                                                                    <div class="tm_pb_contact_field col-md-12"></div>
+
+                                                                    <div class="tm_pb_contact_field col-md-12">
+                                                                        <label class="tm_pb_contact_form_label" for="campos_areaInterest">Área de Interesse*</label>
+                                                                        <textarea class="tm_pb_contact_message tm_pb_contact_form_input"
+                                                                            id="campos_areaInterest" placeholder="Área de interesse*"
+                                                                            [(ngModel)]="contact.areaInterest" #areaInterest="ngModel" name="Área de Interesse" required
+                                                                            [class.field_with_error]="(areaInterest.touched || areaInterest.dirty) && areaInterest.invalid || form.submitted"
+                                                                            [class.field_with_success]="areaInterest.valid">                                                                            
+                                                                        </textarea>
+                                                                        <small class="message-error-textarea" *ngIf="(areaInterest.touched || areaInterest.dirty || form.submitted) && areaInterest.invalid">✖ É necessário preencher o campo 'Área de Interesse'</small>
+                                                                        <small class="message-success-textarea" *ngIf="areaInterest.valid">✔ Valido</small>
+                                                                    </div>
+
+                                                                    <div class="tm_pb_contact_field col-md-12">
+                                                                        <label class="tm_pb_contact_form_label" for="campos_experience">Experiência profissional*</label>
+                                                                        <textarea class="tm_pb_contact_message tm_pb_contact_form_input"
+                                                                            id="campos_experience" placeholder="Experiência profissional*"
+                                                                            [(ngModel)]="contact.professionalExperience" #experience="ngModel" name="Experiência profissional*" required
+                                                                            [class.field_with_error]="(experience.touched || experience.dirty) && experience.invalid || form.submitted"
+                                                                            [class.field_with_success]="experience.valid">                                                                            
+                                                                        </textarea>
+                                                                        <small class="message-error-textarea" *ngIf="(experience.touched || experience.dirty || form.submitted) && experience.invalid">✖ É necessário preencher o campo 'Experiência profissional'</small>
+                                                                        <small class="message-success-textarea" *ngIf="experience.valid">✔ Valido</small>
+                                                                    </div>    
+                                                                </div>
+                                                                <div>
+                                                                    <input class="tm_pb_contact_submit tm_pb_button" type="submit">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="submitForm"
+                                                    class="cadastreimovel_passo cadastreimovel_sucesso custom-msg">
+                                                    <h3>Seu contato foi cadastrado com sucesso.</h3>
+                                                    <p>Aguarde que entraremos em contato o mais breve possível.</p>
+                                                    <em></em>
+                                                    <div class="tm-re-search-form__group-button">
+                                                        <input class="tm-re-search-form__submit" routerLink="/"
+                                                            type="button" value="Voltar para Home" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>

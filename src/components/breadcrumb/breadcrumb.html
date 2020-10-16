@@ -1,0 +1,26 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs__title"></div>
+        <div class="breadcrumbs__items">
+            <div class="breadcrumbs__content">
+                <div class="breadcrumbs__wrap">
+                    <div class="breadcrumbs__item"><a routerLink="/home" class="breadcrumbs__item-link is-home"
+                            rel="home" title="Home">Home</a></div>
+                    <div class="breadcrumbs__item">
+                        <div class="breadcrumbs__item-sep">|</div>
+                    </div>
+                    <div *ngIf="category" class="breadcrumbs__item"><a href="/buscar" class="breadcrumbs__item-link"
+                            rel="tag" title="{{category}}">{{category}}</a></div>
+                    <div *ngIf="category" class="breadcrumbs__item">
+                        <div class="breadcrumbs__item-sep">|</div>
+                    </div>
+                    <div *ngIf="pageTitle" class="breadcrumbs__item">
+                        <span class="breadcrumbs__item-target">
+                            {{pageTitle}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

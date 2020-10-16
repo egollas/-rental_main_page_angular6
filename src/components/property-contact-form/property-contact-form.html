@@ -1,0 +1,114 @@
+<div id="single-property" class="col-xs-12 col-md-4  col-xl-3  single-property widget-area" role="complementary">
+    <aside id="contactForm" class="widget widget-tm-re-property">
+            <h3 class="widget-title">Precisa de ajuda?</h3>
+            <div class="tm-property__wrap template-sidebar regular tm_property--widget list">
+                <div id="mensagens" class="tm-pb-contact-message"></div>
+
+                <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm);" id="contactForm">
+
+                    <div *ngIf="displaySuccess && name.pristine && email.pristine"  class="invalidAlert">
+                        Obrigado! Entraremos em contato em breve.
+                    </div>
+
+                    <div *ngIf="displayFailure" class="invalidAlert">
+                        Por favor, preencha corretamente os campos abaixo:
+                    </div>
+
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalidAlert">
+                        <div *ngIf="contactForm.controls['name'].errors.minglength, else nameRequired">
+                            O campo "Nome" necessita de pelo menos 4 caracteres.
+                        </div>
+
+                        <ng-template #nameRequired>
+                            <div>O campo "Nome" é obrigatório.</div>
+                        </ng-template>
+                    </div>
+
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalidAlert">
+                        <div>O e-mail digitado é inválido.</div>
+                    </div>
+
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="invalidAlert">
+                        <div>O telefone digitado é inválido.</div>
+                    </div>
+
+                    <div class="tm-re-search-form__group">
+                        <select class="tm-re-search-form__field" required
+                        [(ngModel)]="contact.subject" name="subject" id="subject">
+                            <option *ngFor="let subject of subjects"
+                            [value]="subject">
+                                {{subject}} (Código: {{propertyCode}})
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="contato_reservar_opcoes" *ngIf="vacationRental">
+                        <div id="mensagem_detalhe_data" class="tm-pb-contact-message" style="display: none;">
+                          <p>A data selecionada não é válida</p>
+                        </div>
+                      
+                        <div class="tm-re-search-form__group">
+                            <input  class="tm-re-search-form__field" type="text" 
+                                placeholder="De" id="from" readonly="readonly"
+                                [(ngModel)]="contact.start" name="from">
+                        </div>
+                        <div class="tm-re-search-form__group">
+                            <input  class="tm-re-search-form__field" type="text" 
+                                placeholder="Até" id="to"
+                                [(ngModel)]="contact.end" name="to" readonly="readonly">
+                        </div>
+                        <div class="tm-re-search-form__group">
+                            <input  class="tm-re-search-form__field" type="number" required 
+                                placeholder="Adultos"
+                                [(ngModel)]="contact.adults" name="adultos">
+                        </div>
+                        <div class="tm-re-search-form__group">
+                            <input  class="tm-re-search-form__field" type="number" 
+                                placeholder="Crianças"
+                                [(ngModel)]="contact.children" name="criancas">
+                        </div>
+                      
+                    </div>
+
+                    <div class="tm-re-search-form__group">
+                        <input  class="tm-re-search-form__field" type="text" required
+                        minlength="4" 
+                        placeholder="Nome"
+                        [(ngModel)]="contact.name" name="name"
+                        #name="ngModel"
+                        [ngModelOptions]="{ updateOn: 'blur' }">
+                    </div>
+
+                    <div class="tm-re-search-form__group">
+                        <input  class="tm-re-search-form__field" type="email" required 
+                        placeholder="E-mail"
+                        [(ngModel)]="contact.email" name="email"
+                        #email="ngModel"
+                        [ngModelOptions]="{ updateOn: 'blur' }"
+                        [email]="true">
+                    </div>
+
+                    <div class="tm-re-search-form__group">
+                        <input  class="tm-re-search-form__field" type="text" required 
+                        placeholder="Telefone"
+                        [(ngModel)]="contact.phone" name="phone"
+                        #phone="ngModel"
+                        [ngModelOptions]="{ updateOn: 'blur' }">
+                    </div>
+                    
+                    <div class="tm-re-search-form__group">
+                        <textarea class="tm-re-search-form__field"  
+                        placeholder="Mensagem"
+                        [(ngModel)]="contact.message" name="message"
+                        #message="ngModel">
+                        </textarea>
+                    </div>
+
+                    <div class="tm-re-search-form__group-button">
+                        <input class="tm-re-search-form__submit" type="submit" value="Enviar"/>
+                    </div>
+
+                </form>
+            </div>
+    </aside>
+</div>

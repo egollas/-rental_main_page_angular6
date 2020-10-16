@@ -1,0 +1,52 @@
+.imobzi-details {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.property-feature-group li {
+    cursor: pointer;
+}
+
+properties-related {
+    width: 100%;
+}
+
+property-contact-form#help-window {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    property-contact-form#help-window {
+        width: 100%;
+    }
+}
+
+.content-container-recoil {
+    padding-left: 1.7855rem;
+    padding-right: 1.7855rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    add-this-share {
+        float: right;
+    }
+}
+
+@media (max-width: 991px) {
+    add-this-share {
+        float: left;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1199px) {
+    .detalhe_titulo {
+        height: 57px;
+    }
+}
+
+.sohtec-container {
+    margin-top: 20px;
+}

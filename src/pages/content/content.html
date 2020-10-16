@@ -1,0 +1,31 @@
+<div *ngIf="content" id="content" class="site-content">
+    <imobzi-breadcrumb pageTitle="{{content.title}}" ></imobzi-breadcrumb>
+    <div class="site-content_wrap container">
+        <div class="row">
+            <div id="primary" class="col-xs-12 col-md-12">
+                <main id="main" class="site-main" role="main">
+                    <article class="page type-page hentry no-thumb">
+                        <header class="entry-header"></header>
+                        <div class="entry-content">
+                            <div class="tm_builder_outer_content">
+                                <div class="tm_builder_inner_content tm_pb_gutters3">
+                                    <div class="tm_pb_section  tm_pb_section_0 tm_section_regular">
+                                        <div class="container">
+                                            <div class=" row tm_pb_row tm_pb_row_0">
+                                                <div class="tm_pb_column tm_pb_column_4_4  tm_pb_column_0 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <h3>{{content.title}}</h3>
+                                                    <div [innerHtml]="content.page_body | sanitizedHtml" class="tm_pb_text tm_pb_module tm_pb_bg_layout_light tm_pb_text_align_left  tm_pb_text_0">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

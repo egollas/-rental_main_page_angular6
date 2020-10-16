@@ -1,0 +1,324 @@
+<div id="content" class="site-content container">
+    <imobzi-breadcrumb pageTitle="Anuncie seu imóvel"></imobzi-breadcrumb>
+    <div class="site-content_wrap container">
+        <div class="row">
+            <div id="primary" class="col-xs-12 col-md-12 col-xl-12">
+                <main id="main" class="site-main" role="main">                
+                    <article class="page type-page hentry no-thumb">
+                        <header class="entry-header">
+                            <h3>Anuncie seu imóvel</h3>
+                            <hr>
+                        </header>
+                        <div class="entry-content">
+                            <div class="tm_builder_outer_content">
+                                <div class="tm_builder_inner_content tm_pb_gutters3">
+                                    <div class="tm_pb_section  tm_pb_section_0 tm_section_regular">
+                                        <div class="container">
+                                            <div class=" row tm_pb_row tm_pb_row_0">
+                                                <div class="tm_pb_column tm_pb_column_4_4  tm_pb_column_0 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <div class="steps-trail">
+                                                        <div id="trail_01" class="steps-trail-item steps-trail-current-item">1</div>
+                                                        <div id="trail_02" class="steps-trail-item">2</div>
+                                                        <div id="trail_03" class="steps-trail-item">3</div>
+                                                    </div>
+
+                                                    <div id="tm_pb_contact_form_0" class="tm_pb_contact_form form-with-labels tm_pb_contact_form_0 tm_pb_contact_form_container clearfix tm_pb_module" data-form_unique_num="0">
+                                                        <h2 class="tm_pb_contact_main_title"></h2>
+
+                                                        <!-- <div id="mensagens" class="tm-pb-contact-message"></div> -->
+
+                                                        <form class="tm-re-submissionform tm_pb_contact_form clearfix" id="cadastre_imovel" #form="ngForm" (ngSubmit)="submit(form);">                                                      
+                                                            <div style="margin:0;padding:0;display:inline"></div>
+
+                                                            <div id="passo_01" class="row cadastreimovel_passo">
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label" for="name">Nome*</label>
+                                                                    <input class="tm_pb_contact_form_input"
+                                                                        type="text" id="name" placeholder="Nome" name="name"
+                                                                        [(ngModel)]="propertyAdvert.name" #name="ngModel" required
+                                                                        [class.field_with_error]="(name.touched || name.dirty) && name.invalid || form.submitted"
+                                                                        [class.field_with_success]="name.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(name.touched || name.dirty || form.submitted) && name.invalid">✖ É necessário preencher o campo 'Nome'</small>
+                                                                    <small class="message-success" *ngIf="name.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="legal_identification">CPF/CNPJ*</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="text" id="legal_identification" placeholder="CPF ou CNPJ" name="cpfcpnj"                                                                        
+                                                                        [(ngModel)]="propertyAdvert.legal_identification" #legalIdentification="ngModel" required
+                                                                        [class.field_with_error]="(legalIdentification.touched || legalIdentification.dirty) && legalIdentification.invalid || form.submitted"
+                                                                        [class.field_with_success]="legalIdentification.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(legalIdentification.touched || legalIdentification.dirty || form.submitted) && legalIdentification.invalid">✖ É necessário preencher o campo 'CPF/CNPJ'</small>
+                                                                    <small class="message-success" *ngIf="legalIdentification.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label" for="phone">Telefone*</label>
+                                                                    <input class="tm_pb_contact_form_input"                                                                       
+                                                                        type="text" id="phone" placeholder="Telefone" name="phone"
+                                                                        mask="(00) 0*" [dropSpecialCharacters]="false" minlength="13" maxlength="14"
+                                                                        [(ngModel)]="propertyAdvert.phone" #phone="ngModel" required
+                                                                        [class.field_with_error]="(phone.touched || phone.dirty) && phone.invalid || form.submitted"
+                                                                        [class.field_with_success]="(phone.touched || phone.dirty) && phone.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(phone.touched || phone.dirty || form.submitted) && phone.invalid">✖ É necessário preencher corretamente o campo 'Telefone'</small>
+                                                                    <small class="message-success" *ngIf="phone.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="email">Email*</label>
+                                                                    <input  class="tm_pb_contact_form_input" 
+                                                                        type="email" id="email" placeholder="Email" name="email"                                                                       
+                                                                        [(ngModel)]="propertyAdvert.email" #email="ngModel" [email]="true" required
+                                                                        [class.field_with_error]="(email.touched || email.dirty) && email.invalid || form.submitted"
+                                                                        [class.field_with_success]="email.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(email.touched || email.dirty || form.submitted) && email.invalid">✖ É necessário preencher corretamente o campo 'E-mail'</small>
+                                                                    <small class="message-success" *ngIf="email.valid">✔ Valido</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="passo_02" class="row cadastreimovel_passo" style="display:none;">
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label" for="campos_cep">Cep*</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="text" id="campos_cep" placeholder="Cep" name="zipcode"
+                                                                        mask="00000-000" [dropSpecialCharacters]="true" minlength="8"
+                                                                        [(ngModel)]="propertyAdvert.zipcode" #zipcode="ngModel" required (blur)="getAddressByZipCode()"
+                                                                        [class.field_with_error]="(zipcode.touched || zipcode.dirty) && zipcode.invalid || form.submitted || zipCode === true"
+                                                                        [class.field_with_success]="zipcode.valid && zipCode !== true"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(zipcode.touched || zipcode.dirty || form.submitted) && zipcode.invalid || zipCode === true">✖ É necessário preencher o campo 'CEP'</small>
+                                                                    <small class="message-success" *ngIf="zipcode.valid && zipCode !== true">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-8"></div>
+
+                                                                <div class="tm_pb_contact_field col-md-8">
+                                                                    <label class="tm_pb_contact_form_label" for="address">Endereço*</label>
+                                                                    <input  class="tm_pb_contact_form_input" 
+                                                                        type="text" id="address" placeholder="Endereço" name="address"
+                                                                        [(ngModel)]="propertyAdvert.address" #address="ngModel" required
+                                                                        [class.field_with_error]="(address.touched || address.dirty) && address.invalid || form.submitted"
+                                                                        [class.field_with_success]="address.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(address.touched || address.dirty || form.submitted) && address.invalid">✖ É necessário preencher o campo 'Endereço'</small>
+                                                                    <small class="message-success" *ngIf="address.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="address_complement">Complemento</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="text" id="address_complement" name="address_complement" placeholder="Complemento" 
+                                                                        [(ngModel)]="propertyAdvert.address_complement">
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label" for="neighborhood">Bairro*</label>
+                                                                    <input class="tm_pb_contact_form_input"                                                                        
+                                                                        type="text" id="neighborhood" placeholder="Bairro" name="neighborhood"
+                                                                        [(ngModel)]="propertyAdvert.neighborhood" #neighborhood="ngModel" required
+                                                                        [class.field_with_error]="(neighborhood.touched || neighborhood.dirty) && neighborhood.invalid || form.submitted"
+                                                                        [class.field_with_success]="neighborhood.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(neighborhood.touched || neighborhood.dirty || form.submitted) && neighborhood.invalid">✖ É necessário preencher o campo 'Bairro'</small>
+                                                                    <small class="message-success" *ngIf="neighborhood.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="city">Cidade*</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="text" id="city" placeholder="Cidade" name="city"
+                                                                        [(ngModel)]="propertyAdvert.city" #city="ngModel" required
+                                                                        [class.field_with_error]="(city.touched || city.dirty) && city.invalid || form.submitted"
+                                                                        [class.field_with_success]="city.valid"/>                                                                            
+                                                                    <small class="message-error" *ngIf="(city.touched || city.dirty || form.submitted) && city.invalid">✖ É necessário preencher o campo 'Cidade'</small>
+                                                                    <small class="message-success" *ngIf="city.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="campos_uf">Estado*</label>
+                                                                    <select id="campos_uf" placeholder="Estado" name="state" 
+                                                                        [(ngModel)]="propertyAdvert.state" #state="ngModel" required
+                                                                        [class.field_with_error]="(state.touched || state.dirty) && state.invalid || form.submitted"
+                                                                        [class.field_with_success]="state.valid">
+                                                                        <option [value]="undefined">Estado</option>
+                                                                        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                                                                    </select>
+                                                                    <small class="message-error" *ngIf="(state.touched || state.dirty || form.submitted) && state.invalid">✖ É necessário preencher o campo 'Estado'</small>
+                                                                    <small class="message-success" *ngIf="state.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-12"></div>
+
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label" for="campos_tiposubtipo">Tipo do Imóvel*</label>
+                                                                    <select id="campos_tiposubtipo" name="propertyType"                                                                        
+                                                                        (ngModelChange)="setPropertyTypeValues()" (blur)="setPropertyTypeValues()"
+                                                                        [(ngModel)]="propertyTypeSelectedIndex" #propertytype="ngModel" required
+                                                                        [class.field_with_error]="(propertytype.touched || propertytype.dirty) && propertytype.invalid || form.submitted"
+                                                                        [class.field_with_success]="propertytype.valid">
+                                                                        <option [value]="undefined">Tipo do Imóvel</option>
+                                                                        <option *ngFor="let propertyType of propertyTypes; let index = index" [value]="index + 1">{{ propertyType.finality + '/' + propertyType.type }}</option>
+                                                                    </select>
+                                                                    <small class="message-error" *ngIf="(propertytype.touched || propertytype.dirty || form.submitted) && propertytype.invalid">✖ É necessário preencher o campo 'Tipo do Imóvel'</small>
+                                                                    <small class="message-success" *ngIf="propertytype.valid">✔ Valido</small>
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-6">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="campos_disponibilidade">Disponibilidade*</label>
+                                                                    <select id="campos_disponibilidade" name="available"
+                                                                        [(ngModel)]="propertyAdvert.availability" #availability="ngModel" required
+                                                                        [class.field_with_error]="(availability.touched || availability.dirty) && availability.invalid || form.submitted"
+                                                                        [class.field_with_success]="availability.valid">
+                                                                        <option *ngFor="let availability of propertyAvailabilities" [value]="availability">{{availability}}</option>
+                                                                    </select>
+                                                                    <small class="message-error" *ngIf="(availability.touched || availability.dirty || form.submitted) && availability.invalid">✖ É necessário preencher o campo 'Disponibilidade'</small>
+                                                                    <small class="message-success" *ngIf="availability.valid">✔ Valido</small>
+                                                                </div>   
+
+                                                                <ng-container *ngIf="propertyAdvert.availability === 'Venda'">
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label class="tm_pb_contact_form_label" for="sale_value">Preço de Venda*</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            type="text" id="sale_value" placeholder="Preço de Venda" name="sale_value"
+                                                                            mask="dot_separator.2" [dropSpecialCharacters]="true"                                                                               
+                                                                            onclick="this.select()" ontouchend="this.select()"                                                                                
+                                                                            [(ngModel)]="propertyAdvert.sale_value" #saleValue="ngModel" required
+                                                                            [class.field_with_error]="(saleValue.touched || saleValue.dirty) && saleValue.invalid || form.submitted"
+                                                                            [class.field_with_success]="saleValue.valid"/>                                                                            
+                                                                        <small class="message-error" *ngIf="(saleValue.touched || saleValue.dirty || form.submitted) && saleValue.invalid">✖ É necessário preencher o campo 'Preço de Venda'</small>
+                                                                        <small class="message-success" *ngIf="saleValue.valid">✔ Valido</small>
+                                                                    </div>
+                                                                    <div class="tm_pb_contact_field col-md-6"></div>
+                                                                </ng-container>
+
+                                                                <ng-container *ngIf="propertyAdvert.availability === 'Locação' || propertyAdvert.availability === 'Temporada'">
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label class="tm_pb_contact_form_label" for="rental_value">Valor Locação*</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            type="text" id="rental_value" placeholder="Valor de Locação" name="rental_value"
+                                                                            mask="dot_separator.2" [dropSpecialCharacters]="true"
+                                                                            onclick="this.select()" ontouchend="this.select()"
+                                                                            [(ngModel)]="propertyAdvert.rental_value" #rentalValue="ngModel" required
+                                                                            [class.field_with_error]="(rentalValue.touched || rentalValue.dirty) && rentalValue.invalid || form.submitted"
+                                                                            [class.field_with_success]="rentalValue.valid"/>                                                                            
+                                                                        <small class="message-error" *ngIf="(rentalValue.touched || rentalValue.dirty || form.submitted) && rentalValue.invalid">✖ É necessário preencher o campo 'Valor Locação'</small>
+                                                                        <small class="message-success" *ngIf="rentalValue.valid">✔ Valido</small>
+                                                                    </div>
+                                                                    <div class="tm_pb_contact_field col-md-6"></div>
+                                                                </ng-container>
+
+                                                                <ng-container *ngIf="propertyAdvert.availability === 'Venda / Locação'">
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label class="tm_pb_contact_form_label" for="sale_value">Preço de Venda*</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            type="text" id="sale_value" placeholder="Preço de Venda" name="sale_value" 
+                                                                            mask="dot_separator.2" [dropSpecialCharacters]="true"                                                                               
+                                                                            onclick="this.select()" ontouchend="this.select()"                                                                                
+                                                                            [(ngModel)]="propertyAdvert.sale_value" #saleValue="ngModel" required
+                                                                            [class.field_with_error]="(saleValue.touched || saleValue.dirty) && saleValue.invalid || form.submitted" 
+                                                                            [class.field_with_success]="saleValue.valid"/>                                                                            
+                                                                        <small class="message-error" *ngIf="(saleValue.touched || saleValue.dirty || form.submitted) && saleValue.invalid">✖ É necessário preencher o campo 'Preço de Venda'</small>
+                                                                        <small class="message-success" *ngIf="saleValue.valid">✔ Valido</small>
+                                                                    </div>
+
+                                                                    <div class="tm_pb_contact_field col-md-6">
+                                                                        <label class="tm_pb_contact_form_label form-right-field-label" for="rental_value">Valor Locação*</label>
+                                                                        <input class="tm_pb_contact_form_input"
+                                                                            type="text" id="rental_value" placeholder="Valor de Locação" name="rental_value" 
+                                                                            mask="dot_separator.2" [dropSpecialCharacters]="true"
+                                                                            onclick="this.select()" ontouchend="this.select()"
+                                                                            [(ngModel)]="propertyAdvert.rental_value" #rentalValue="ngModel" required
+                                                                            [class.field_with_error]="(rentalValue.touched || rentalValue.dirty) && rentalValue.invalid || form.submitted"
+                                                                            [class.field_with_success]="rentalValue.valid"/>                                                                            
+                                                                        <small class="message-error" *ngIf="(rentalValue.touched || rentalValue.dirty || form.submitted) && rentalValue.invalid">✖ É necessário preencher o campo 'Valor Locação'</small>
+                                                                        <small class="message-success" *ngIf="rentalValue.valid">✔ Valido</small>
+                                                                    </div>
+                                                                </ng-container>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label" for="bedroom">Dormitórios</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="number" id="bedroom" placeholder="Dormitórios" name="bedroom"
+                                                                        [(ngModel)]="propertyAdvert.bedroom" min="0">
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="suite">Suítes</label>
+                                                                    <input class="tm_pb_contact_form_input" 
+                                                                        type="number" id="suite" placeholder="Suítes" name="suite" 
+                                                                        [(ngModel)]="propertyAdvert.suite" min="0">
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-4">
+                                                                    <label class="tm_pb_contact_form_label form-right-field-label" for="garage">Vagas</label>
+                                                                    <input class="tm_pb_contact_form_input"
+                                                                        type="number" id="garage" placeholder="Vagas" name="garage"
+                                                                        [(ngModel)]="propertyAdvert.garage" min="0">
+                                                                </div>
+
+                                                                <div class="tm_pb_contact_field col-md-12 ">
+                                                                    <label class="tm_pb_contact_form_label" for="description">Observações*</label>
+                                                                    <textarea class="tm_pb_contact_message tm_pb_contact_form_input" 
+                                                                        id="description" placeholder="Observações" name="description"
+                                                                        [(ngModel)]="propertyAdvert.description" #description="ngModel" required
+                                                                        [class.field_with_error]="(description.touched || description.dirty) && description.invalid || form.submitted"
+                                                                        [class.field_with_success]="description.valid">                                                                            
+                                                                    </textarea>
+                                                                    <small class="message-error-textarea" *ngIf="(description.touched || description.dirty || form.submitted) && description.invalid">✖ É necessário preencher o campo 'Observações'</small>
+                                                                    <small class="message-success-textarea" *ngIf="description.valid">✔ Valido</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div id="passo_03" class="row cadastreimovel_passo" style="display:none;">
+                                                                <div id="cadastre_imovel_anexos_campo" class="col-md-12 form-center-field">                                                   
+                                                                    <a (click)="openUploader();"class="tm_pb_button">Anexar Imagens</a>
+                                                                    <input id="uploader" type="file" ng2FileSelect [uploader]="uploader" multiple  style="display:none;"/><br/>                                                                    
+                                                                </div>
+
+                                                                <div class="col-md-12 form-center-field">
+                                                                    * Máximo de 10 Arquivos com até 30mb
+                                                                </div>
+
+                                                                <div id="cadastre_imovel_anexos" class="anexos">
+                                                                    <div *ngFor="let item of uploader.queue" id="cadastre_imovel_anexo0" class="anexo">
+                                                                        <a title="remover" (click)="item.remove();" class="anexo_remover">x</a>
+                                                                        <div>
+                                                                            <label title="{{ item?.file?.name }}">{{ item?.file?.name }}</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                                           
+
+                                                            <input class="tm_pb_contact_submit tm_pb_button" id="submitButton" name="commit" type="submit" [value]="(step == 3)? 'Enviar' : 'Avançar'">
+
+                                                            <a (click)="goBack();" id="backButton" class="form_previous_button" style="display:none;">
+                                                                <span>
+                                                                    <i class="material-icons">keyboard_arrow_left</i> Voltar
+                                                                </span>
+                                                            </a>
+
+                                                            <div id="passo_04" class="cadastreimovel_passo cadastreimovel_sucesso" style="display:none;">
+                                                                <h3>Seu imóvel foi cadastrado com sucesso.</h3>
+                                                                <p>Aguarde que entraremos em contato o mais breve possível.</p>
+                                                                <em></em>
+                                                                <div class="tm-re-search-form__group-button">
+                                                                    <input class="tm-re-search-form__submit" routerLink="/" type="button" value="Voltar para Home"/>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

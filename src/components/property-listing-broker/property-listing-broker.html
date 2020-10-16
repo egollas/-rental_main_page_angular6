@@ -1,0 +1,27 @@
+<div class="tm-agent-info" *ngIf="listingBroker.license">
+    <h2 class="tm-agent-info__subtitle">Fale com o Corretor {{listingBroker.name}}</h2>
+    <lazy-loading-image class="tm-agent-info__photo">
+        <img alt="Corretor {{listingBroker.name}}" (error)="realtorImgErrorHandler($event)"
+            *ngIf src="{{listingBroker.profile_image_url}}" title="Corretor {{listingBroker.name}}">
+    </lazy-loading-image>
+    <div class="tm-agent-info__details">
+        <h6 class="tm-agent-info__title">{{listingBroker.name}}</h6>
+        <div class="tm-agent-info__desc">
+        <ul>
+            <li *ngIf="listingBroker.license" >CRECI {{listingBroker.license}}</li>
+            <li *ngIf="listingBroker.email">{{listingBroker.email}}</li>
+            <li style="min-height: 21px;"></li>
+            <li class="ofertas-anunciante-li">
+                <a (click)="listingBrokerSearch()" routerLink="/corretor/{{listingBroker.nickname}}" class="ofertas-anunciante">Imóveis deste corretor</a>
+            </li>
+        </ul>
+        </div>
+        <div class="tm-agent-info__contacts">
+        <div *ngIf="listingBroker.phones && listingBroker.phones[0].number.length > 0" class="tm-agent-info__contacts-item empty-label">
+            <i class="tm-agent-info__contacts-item-icon fa fa-phone"></i>
+            <span class="tm-agent-info__contacts-item-label"></span>
+            <span class="tm-agent-info__contacts-item-value">{{listingBroker.phones[0].number}}</span>
+        </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<footer id="colophon" class="site-footer default container" role="contentinfo">
+    <div class="footer-container">
+        <div *ngIf="parameters" class="site-info container">
+            <div class="footer__first-row enderecoDesktop" style="position:relative;">
+                <div class="footer-logo">
+                    <a href="/" class="footer-logo_link">
+                        <lazy-loading-image>
+                            <img alt="Logotipo de {{parameters.company_name}}" title="{{parameters.company_name}}"
+                                class="footer-logo_img" *ngIf src="{{bucketPath + '/logo.png'}}" />
+                        </lazy-loading-image>
+                    </a>
+                    <div *ngIf="parameters.address || parameters.phone || parameters.email" class="footer-contact-info">
+                        <div *ngIf="parameters.address" [title]="parameters.address">
+                            <i class="lnr lnr-map2"></i>
+                            {{ parameters.address }}
+                            {{(parameters.address_complement)? ", " + parameters.address_complement: ''}}
+                            {{(parameters.neighborhood)? " - " + parameters.neighborhood: ''}}
+                            {{(parameters.city)? " - " + parameters.city: ''}}
+                            {{(parameters.state)? " - " + parameters.state: ''}}
+                        </div>
+                        <div>
+                            <span *ngFor="let phone of parameters.phone; let last = last">
+                                <a [title]="phone.number" class="phone_footer" (click)="onPhoneClicked(phone)">
+                                    <ng-container *ngIf="phone.type && phone.type.toLowerCase() == 'whatsapp' else telephoneIcon">
+                                        <img src="{{layoutBucketPath + '/image/whatsapp.png'}}" class="whatsapp-header-icon">
+                                    </ng-container>
+                                    <ng-template #telephoneIcon>
+                                        <i class="lnr lnr-telephone"></i>
+                                    </ng-template>
+                                    {{phone.number}} {{(last)? '': '/'}}
+                                </a>
+                            </span>
+                            {{(parameters.email && parameters.email.length > 0)? " | " : ""}}
+                            <a *ngFor="let email of parameters.email; let last = last" [title]="email" href="mailto:{{email}}">
+                                <i class="lnr lnr-envelope"></i>
+                                {{email}}{{(last)? '': '/'}} 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-list social-list--footer social-list--icon">
+                    <imobzi-redes-sociais [parameters]="parameters"></imobzi-redes-sociais>
+                </div>
+            </div>
+            <div class="footer__first-row enderecoMobile">
+                <div class="footer-logo">
+                    <a href="/" class="footer-logo_link">
+                        <lazy-loading-image>
+                            <img alt="Logotipo de {{parameters.company_name}}" class="footer-logo_img" *ngIf src="{{bucketPath + '/logo.png'}}" />
+                        </lazy-loading-image>
+                    </a>
+                    <div *ngIf="parameters.address || parameters.phone || parameters.email" class="footer-contact-info">
+                        <div *ngIf="parameters.address">
+                            <i class="lnr lnr-map2"></i>
+                            {{ parameters.address }}
+                            {{(parameters.address_complement)? ", " + parameters.address_complement: ''}}
+                            {{(parameters.neighborhood)? " - " + parameters.neighborhood: ''}}
+                            {{(parameters.city)? " - " + parameters.city: ''}}
+                            {{(parameters.state)? " - " + parameters.state: ''}}
+                        </div>
+                        <div class="container-phone ">
+                            <span *ngFor="let phone of parameters.phone; let last = last">
+                                <a class="phone_footer" (click)="onPhoneClicked(phone)">
+                                    <ng-container *ngIf="phone.type && phone.type.toLowerCase() == 'whatsapp' else telephoneIcon">
+                                        <img src="{{layoutBucketPath + '/image/whatsapp.png'}}" class="whatsapp-header-icon">
+                                    </ng-container>
+                                    <ng-template #telephoneIcon>
+                                        <i class="lnr lnr-telephone"></i>
+                                    </ng-template>                                    
+                                    {{phone.number}} {{(last)? '': '/'}}
+                                </a>
+                            </span>
+                            <br>                            
+                            <a *ngFor="let email of parameters.email; let last = last" href="{{email}}">
+                                <i class="lnr lnr-envelope"></i>
+                                {{email}}{{(last)? '': '/'}} 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <nav id="footer-navigation" class="footer-menu" role="navigation">
+                </nav>
+            </div>
+            <div class="footer__second-row">
+                <div id="logoImobzi">
+                    <a href="https://www.imobzi.com/?utm_source=template&utm_medium=logo-footer&utm_campaign=footer-template&utm_content=logo-footer"
+                        class="logo-imobzi" target="_blank">
+                        <span>Site</span>
+                        <img alt="Logotipo" src="{{layoutBucketPath + '/image/logo-camaleao.svg'}}" title="Software e site para imobiliárias e corretores" />
+                        <span>by Imobzi</span>
+                    </a>
+                </div>
+                <div class="social-list social-list--footer social-list--icon hiddenSocial">
+                    <imobzi-redes-sociais [parameters]="parameters"></imobzi-redes-sociais>
+                </div>
+                <div class="footer-copyright">
+                    <span *ngIf="parameters.site_copyright">{{parameters.site_copyright}}</span>
+                    <span *ngIf="parameters.site_copyright && parameters.creci"> - </span>
+                    <span *ngIf="parameters.creci">{{' CRECI: ' + parameters.creci }}</span>
+                </div>
+            </div>
+        </div>
+        <whatsapp-button [parameters]="parameters"></whatsapp-button>
+    </div>
+</footer>

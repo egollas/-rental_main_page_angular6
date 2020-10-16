@@ -1,0 +1,49 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css");
+
+.swiper-slide {
+    text-align: center;
+}
+
+.tm-property-gallery__thumbs-item img {
+    height: 111px;
+}
+
+.swiper-slide:hover {
+    background-color: transparent !important;
+}
+
+.detalhes-gallery-video-container,
+.swiper-slide img {
+    max-height: 642px;
+}
+
+.tm-property-gallery--top {
+    position: relative;
+    max-height: 635px !important;
+}
+
+@media (min-width: 992px) {
+    .tm-property-gallery--top {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
+}
+
+.photo-details {
+    display: grid;
+    align-items: center;
+    height: auto;
+}
+
+.photo-details img {
+    margin: auto;
+}
+
+.video-block {
+    height: auto;
+    display: grid;
+}
+
+lazy-loading-image {
+    height: auto !important;
+}

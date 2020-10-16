@@ -1,0 +1,49 @@
+<div *ngIf="realtors && realtors.length > 0" class="tm_pb_section  tm_pb_section_4 tm_section_regular">
+  <div class="container">
+    <div class=" row tm_pb_row tm_pb_row_4">
+      <div class="tm_pb_column tm_pb_column_4_4  tm_pb_column_6 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <hr class="tm_pb_module tm_pb_space tm_pb_divider_2" />
+        <div class="tm_pb_text tm_pb_module tm_pb_bg_layout_light tm_pb_text_align_center  tm_pb_text_2">
+          <h3>Nossos Corretores</h3>
+        </div>
+        <hr class="tm_pb_module tm_pb_space tm_pb_divider_3">
+        <div class="tm_pb_cherry_re_agent_list tm_pb_cherry_re_agent_list_0">
+          <div class="tm-agents-list template-default regular">
+            <div *ngFor="let realtor of realtors" class="tm-agent tm-agent-list__item item-1 clearfix odd">
+                <div class="tm-agent__wrap">
+                  <div class="tm-agent__photo">
+                    <lazy-loading-image>
+                      <img alt="Corretor {{realtor.name}}" (error)="realtorImgErrorHandler($event)"
+                        *ngIf src="{{realtor.profile_image_url}}" title="Corretor" />
+                    </lazy-loading-image>
+                  </div>
+                  <div class="tm-agent__content">
+                    <h5 class="tm-agent__name">{{realtor.name}}</h5>
+                    <div class="tm-agent__desc">
+                      <ul>
+                        <li *ngIf="realtor.license">CRECI {{realtor.license}}</li>
+                        <li *ngIf="realtor.email">{{realtor.email}}</li>
+                        <li style="min-height:21px"> </li>
+                        <li class="ofertas-anunciante-li">
+                          <a class="ofertas-anunciante" (click)="realtorsSearch()" routerLink="/corretor/{{realtor.nickname}}">Veja ofertas deste corretor</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tm-agent__contacts">                        
+                      <ng-container *ngIf="realtor.phones">
+                        <div class="tm-agent__contacts-item empty-label">
+                          <i class="tm-agent__contacts-item-icon fa fa-phone"></i>
+                          <span class="tm-agent__contacts-item-label"></span>
+                          <span class="tm-agent__contacts-item-value">{{ realtor.phones[0]?.number }}</span>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

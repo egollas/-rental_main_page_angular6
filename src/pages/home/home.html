@@ -1,0 +1,100 @@
+<div class="site-content_wrap">
+    <imobzi-map *ngIf="layoutType.layout === 'map'" [properties]="propertiesMap"></imobzi-map>
+    <highlight-gallery *ngIf="(layoutType.layout === 'banner') && propertiesSection1" [properties]="propertiesSection1"></highlight-gallery>
+<div class="row">
+    <div id="primary" class="col-xs-12 col-md-12">
+        <main id="main" class="site-main" role="main">
+            <article id="post-451" class="post-451 page type-page hentry no-thumb">
+                <header class="entry-header"></header>
+                <!-- .entry-header -->
+                <div class="entry-content">
+                    <div class="tm_builder_outer_content">
+                        <div class="tm_builder_inner_content tm_pb_gutters3">
+
+                            <ng-container *ngIf="layoutType.layout !== 'banner'; else banner">
+                                <properties-highlight *ngIf="propertiesSection1 && propertiesSection1.length > 0" [properties]="propertiesSection1"></properties-highlight>
+                            </ng-container>
+                            <ng-template #banner>
+                                <properties-highlight *ngIf="propertiesSection2 && propertiesSection2.length > 0" [properties]="propertiesSection2"></properties-highlight>
+                            </ng-template>
+                            
+                            <section class="tm_pb_section  tm_pb_section_1 tm_pb_with_background tm_section_regular">
+                                <div class="container">
+                                    <div class=" row tm_pb_row tm_pb_row_1">
+                                        <div class="tm_pb_column tm_pb_column_1_3  tm_pb_column_1 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="tm_pb_blurb tm_pb_blurb_0 tm_pb_bg_layout_light tm_pb_text_align_left tm_pb_blurb_position_top tm_pb_module">
+                                                <div class="tm_pb_blurb_content">
+                                                    <div class="tm_pb_main_blurb_image">
+                                                        <span class="tm-pb-icon tm-waypoint tm_pb_animation_top" data-icon=""></span>
+                                                    </div>
+                                                    <div class="tm_pb_blurb_container">
+                                                        <h4>As melhores oportunidades:</h4>
+                                                        <div class="tm_pb_blurb_content"> Iremos selecionar alguns imóveis que você pode gostar e considerar a visita com um dos
+                                                            corretores
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tm_pb_column tm_pb_column_1_3  tm_pb_column_2 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="tm_pb_blurb tm_pb_blurb_1 tm_pb_bg_layout_light tm_pb_text_align_left tm_pb_blurb_position_top tm_pb_module">
+                                                <div class="tm_pb_blurb_content">
+                                                    <div class="tm_pb_main_blurb_image">
+                                                        <span class="tm-pb-icon tm-waypoint tm_pb_animation_top" data-icon=""></span>
+                                                    </div>
+                                                    <div class="tm_pb_blurb_container">
+                                                        <h4>Vamos acompanhar você:</h4>
+                                                        <div class="tm_pb_blurb_content">
+                                                            <p>Nossos corretores são especialmente treinados para oferecer a você a melhor consultoria na escolha do seu imóvel</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tm_pb_column tm_pb_column_1_3  tm_pb_column_3 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                            <div class="tm_pb_blurb tm_pb_blurb_2 tm_pb_bg_layout_light tm_pb_text_align_left tm_pb_blurb_position_top tm_pb_module">
+                                                <div class="tm_pb_blurb_content">
+                                                    <div class="tm_pb_main_blurb_image">
+                                                        <span class="tm-pb-icon tm-waypoint tm_pb_animation_top" data-icon=""></span>
+                                                    </div>
+                                                    <div class="tm_pb_blurb_container">
+                                                        <h4>Buscaremos a melhor condição:</h4>
+                                                        <div class="tm_pb_blurb_content">
+                                                            <p>Nossa equipe irá buscar a melhor condição de fechamento, oferecendo inclusive suporte a financiamento com os principais bancos</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <imobzi-typespotlight></imobzi-typespotlight>
+                            <div class="tm_pb_section  tm_pb_section_3 tm_pb_with_background tm_section_regular"
+                                    [style.background-image]="'url(' + layoutBucketPath + '/image/homeAlt.jpg)'">
+                                <div class="container">
+                                    <div class=" row tm_pb_row tm_pb_row_3">
+                                        <div class="tm_pb_column tm_pb_column_4_4  tm_pb_column_5 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                            <div class="tm_pb_cta tm_pb_cta_0 tm_pb_promo tm_pb_bg_layout_light tm_pb_text_align_center tm_pb_no_bg tm_pb_module">
+                                                <div class="tm_pb_promo_description">
+                                                    <h2>Somos incansáveis</h2>
+                                                    <h3>Nós temos um amplo portfólio de imóveis para você escolher. Assim você tem inúmeras opções que podem encaixar no seu perfil!</h3>
+                                                </div>
+                                                <a class="tm_pb_promo_button tm_pb_button home-button" routerLink="/buscar" data-icon="">
+                                                    Saiba mais
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <imobzi-realtors *ngIf="layoutType.footer === 'realtors'"></imobzi-realtors>
+                            <properties-highlight-footer *ngIf="layoutType.footer === 'highlight-footer' && propertiesFooter && propertiesFooter.length > 0" [properties]="propertiesFooter"></properties-highlight-footer>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+</div>
+</div>

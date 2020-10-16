@@ -1,0 +1,36 @@
+<div id="loading" class="page-preloader-cover" style="opacity: 1;display: none;background: none;">
+    <div class="page-preloader">
+        <div class="page-preloader-houses">
+            <div class="page-preloader-house page-preloader-house-1">
+                <div class="roof"></div>
+                <div class="basis">
+                    <div class="window"></div>
+                </div>
+            </div>
+            <div class="page-preloader-house page-preloader-house-2">
+                <div class="roof">
+                    <div class="pipe"></div>
+                </div>
+                <div class="basis">
+                    <div class="door"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+            <div class="page-preloader-house page-preloader-house-3">
+                <div class="roof"></div>
+                <div class="basis">
+                    <div class="door"></div>
+                    <div class="window"></div>
+                </div>
+            </div>
+            <div class="page-preloader-ground"></div>
+            <div class="page-preloader-clouds-1"></div>
+            <div class="page-preloader-clouds-2"></div>
+            <div class="page-preloader-clouds-3"></div>
+        </div>
+    </div>
+    <div class="carregando_background"></div>
+</div>
+<imobzi-header [parameters]="parameters" [calledFromHome]="calledFromHome"></imobzi-header>
+<router-outlet></router-outlet>
+<imobzi-footer [parameters]="parameters"></imobzi-footer>
